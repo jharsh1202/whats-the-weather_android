@@ -2,10 +2,13 @@ package com.example.whatstheweather;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Application;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (IOException e) {
                 e.printStackTrace();
+                //Toast.makeText(getApplicationContext(), "Is that really a city name??", Toast.LENGTH_SHORT).show();
+                //we have to add this ui thread,(runOnUiThread)
+                Thread thread = new Thread(){
+                    public void run(){
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Is that really a city name??", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                };
+                thread.start();
                 return null;
             }
 
@@ -81,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
                 //Log.i("description",description);
                 TextView mainTv=findViewById(R.id.main);
                 TextView descriptionTv=findViewById(R.id.description);
-                mainTv.setText(main);
-                descriptionTv.setText("details: "+description);
+                    mainTv.setText(main);
+                    descriptionTv.setText("details: "+description);
 
             } catch (Exception e) {
                 Log.i("Json",e.getMessage());
@@ -93,16 +108,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void findweather(View view){
+        TextView mainTv=findViewById(R.id.main);
+        TextView descriptionTv=findViewById(R.id.description);
         EditText locationTv=findViewById(R.id.locationTV);
         location=(locationTv.getText().toString());
         if (location.length()>0){
             APIdata="";
+            mainTv.setText("");
+            descriptionTv.setText("");
             DownloadWeather downloadWeather=new DownloadWeather();
             UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=0c8f0989e4594ee937dc7a993f75724a";
+            //delete the above line ann put this instead with you api key, UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=<YOURAPIKEY>"
             downloadWeather.execute(UKUrl);
         }
         else
             Toast.makeText(this, "Enter a valid city", Toast.LENGTH_SHORT).show();
+
+        //hide the keyboard after the check is clicked
+        InputMethodManager keyboard=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        keyboard.hideSoftInputFromWindow(locationTv.getWindowToken(),0);
     }
 
     @Override
