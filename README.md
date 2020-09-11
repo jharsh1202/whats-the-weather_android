@@ -14,6 +14,8 @@ Android app to check weather for any ciy.
 2. Goto https://home.openweathermap.org/api_keys
 3. Copy the API key from that page.
 4. put that copied key in UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=<YOURAPIKEY>";
-      eg.  UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=0c8f0989e4594ee937dc7a993f753545";
+
+eg.  
+UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=0c8f0989e4594ee937dc7a993f753545";
 5. That's it. Happy learning.
 
