@@ -117,14 +117,16 @@ public class MainActivity extends AppCompatActivity {
             mainTv.setText("");
             descriptionTv.setText("");
             DownloadWeather downloadWeather=new DownloadWeather();
-            UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=0c8f0989e4594ee937dc7a993f75724a";
-            //delete the above line ann put this instead with you api key, UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=<YOURAPIKEY>"
+            UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=<YOUR API KEY>";
+            /*delete the above <YOUR API KEY> and put this instead with you api key,
+            create your API key from readme instructions
+             */
             downloadWeather.execute(UKUrl);
         }
         else
             Toast.makeText(this, "Enter a valid city", Toast.LENGTH_SHORT).show();
 
-        //hide the keyboard after the check is clicked
+        //hide the keyboard after the check button is clicked
         InputMethodManager keyboard=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         keyboard.hideSoftInputFromWindow(locationTv.getWindowToken(),0);
     }
