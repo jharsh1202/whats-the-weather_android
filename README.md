@@ -13,9 +13,10 @@ Android app to check weather for any ciy.
 1. Sign up on http://openweathermap.org/
 2. Goto https://home.openweathermap.org/api_keys
 3. Copy the API key from that page.
-4. put that copied key in UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid= &lt;YOUR API KEY&gt;"; in MainActivity.java 
-
-like this UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=0c8f0989e4594ee937dc7a993f753545";
+4. put that copied key in UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid= &lt;YOUR API KEY&gt;"; in MainActivity.java like below<br> UKUrl="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid=0c8f0989e4594ee937dc7a993f753545";
 
 5. That's it. Happy learning.
+<br>
 
+Screenshots:
+![image](https://user-images.githubusercontent.com/41900044/95006323-16bb6780-0621-11eb-880c-bc9658dc6922.png)
