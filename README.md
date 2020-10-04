@@ -18,5 +18,5 @@ Android app to check weather for any ciy.
 5. That's it. Happy learning.
 <br>
 
-Screenshots:
+Screenshots:<br><br>
 ![image](https://user-images.githubusercontent.com/41900044/95006323-16bb6780-0621-11eb-880c-bc9658dc6922.png)
